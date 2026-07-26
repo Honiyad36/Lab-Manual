@@ -1,3 +1,4 @@
+//Ensure three threads execute in a fixed sequence so their output is always ordered 
 import java.util.concurrent.CountDownLatch;
 class Foo {
     private CountDownLatch latch1;
