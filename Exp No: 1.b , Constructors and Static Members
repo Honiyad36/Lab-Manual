@@ -1,3 +1,4 @@
+//Design a HashSet without using any built-in hash table libraries. 
 class MyHashSet {
     private boolean[] set;
     public MyHashSet() {
