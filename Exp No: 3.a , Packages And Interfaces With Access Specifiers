@@ -1,4 +1,4 @@
-program
+//A Java Shape Area Calculator demonstrating packages, interfaces, and access specifiers. 
 import java.lang.Math;
 interface Shape {
     double calculateArea();
