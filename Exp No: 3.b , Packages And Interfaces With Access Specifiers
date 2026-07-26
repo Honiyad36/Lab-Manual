@@ -1,0 +1,49 @@
+//Design a class that computes and stores the value of Pi using public, private, and protected access specifiers to control member access . 
+import java.util.Scanner;
+public class PiCalculator {
+    public final double PI_CONSTANT = Math.PI;
+    private int numTerms;
+    private double computedPi;
+    public PiCalculator(int terms) {
+        this.numTerms = terms;
+        this.computedPi = calculatePiLeibniz(terms);
+    }
+    private double calculatePiLeibniz(int terms) {
+        double pi = 0.0;
+        double sign = 1.0;
+        for (int i = 0; i < terms; i++) {
+            pi += sign * (4.0 / (2 * i + 1));
+            sign = -sign; // Alternate sign (+ / -)
+        }
+        return pi;
+    }
+    public void displayResult() {
+        System.out.println("\nPublic Method - Displaying Result:");
+        System.out.println("Approximated value of Pi: " + this.computedPi);
+    }
+    protected void displayPrecisionInfo() {
+        System.out.println("\nProtected Method - Displaying Precision Info:");
+        System.out.println("Precision used: " + this.numTerms + " terms");
+        System.out.println("Series used: Leibniz Series (4/1 - 4/3 + 4/5 - 4/7 + 4/9 ...)");
+    }
+    void displayPrivateDataInfo() {
+        System.out.println("\nPrivate Data - Accessed only within class:");
+        System.out.println("Raw computed value (private): " + this.computedPi);
+    }
+    public double calculateArea(double radius) {
+        return this.computedPi * radius * radius;
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("=== Pi Calculator using Access Specifiers ===");
+        System.out.print("\nEnter the number of terms for Pi approximation: ");
+        int terms = scanner.nextInt();
+        System.out.println("\nCalculating Pi using Leibniz Series...");
+        PiCalculator calculator = new PiCalculator(terms);
+        calculator.displayResult();
+        calculator.displayPrecisionInfo();
+        calculator.displayPrivateDataInfo();
+
+        scanner.close();
+    }
+}
